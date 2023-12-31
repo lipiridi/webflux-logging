@@ -3,16 +3,41 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.github.lipiridi</groupId>
+    <artifactId>webflux-logging</artifactId>
+    <version>1.0.0</version>
+
+    <name>Webflux Logging</name>
+    <description>Java library for logging incoming HTTP requests in Spring WebFlux applications</description>
+    <url>https://github.com/lipiridi/webflux-logging</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Dimitrii Lipiridi</name>
+            <email>lipirididi@gmail.com</email>
+            <organizationUrl>https://github.com/lipiridi</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/lipiridi/webflux-logging.git</connection>
+        <developerConnection>scm:git:ssh://github.com:lipiridi/webflux-logging.git</developerConnection>
+        <url>http://github.com/lipiridi/webflux-logging/tree/master</url>
+    </scm>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.github.lipiridi</groupId>
-    <artifactId>webflux-logging</artifactId>
-    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
@@ -27,6 +52,17 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -38,6 +74,32 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
