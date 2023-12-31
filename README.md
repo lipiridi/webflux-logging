@@ -1,5 +1,7 @@
 # Webflux Logging
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.lipiridi/webflux-logging)](https://search.maven.org/artifact/io.github.lipiridi/webflux-logging)
+
 Webflux Logging is a Java library for logging incoming HTTP requests in Spring WebFlux applications. It collects request
 data into an HttpLog model and provides the capability to write this data as a JSON string to the console. The library
 offers additional configuration options and extensibility through the use of custom HttpLogConsumer beans.
@@ -26,7 +28,7 @@ To include this library in your Spring WebFlux project, add the following depend
 ```xml
 
 <dependency>
-    <groupId>com.github.lipiridi</groupId>
+    <groupId>io.github.lipiridi</groupId>
     <artifactId>webflux-logging</artifactId>
     <version>1.0.0</version> <!-- Replace with the latest version -->
 </dependency>
