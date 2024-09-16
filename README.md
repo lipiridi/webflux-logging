@@ -30,7 +30,7 @@ To include this library in your Spring WebFlux project, add the following depend
 <dependency>
     <groupId>io.github.lipiridi</groupId>
     <artifactId>webflux-logging</artifactId>
-    <version>1.0.0</version> <!-- Replace with the latest version -->
+    <version>1.0.1</version> <!-- Replace with the latest version -->
 </dependency>
 ```
 
@@ -55,7 +55,10 @@ logging.webflux.http.ignore-patterns=/actuator/**, /swagger-ui
 ### Custom HttpLog Consumers
 
 To perform additional actions with `HttpLog` objects, you can implement the `HttpLogConsumer` interface and register it
-as a bean. Here's an example of creating a custom `HttpLogConsumer`:
+as a bean. It can be used to modify the `HttpLog` before logging it or publishing it to external storage.
+
+Here's an example of creating a custom `HttpLogConsumer`:
+
 ```java
 import org.springframework.stereotype.Component;
 
@@ -69,31 +72,36 @@ public class CustomHttpLogConsumer implements HttpLogConsumer {
 ```
 
 ## Sample HttpLog Output
+
 Here's an example of the JSON output that the library generates for an HTTP request:
+
 ```json
 {
-    "uri": "http://localhost:8080/ping?filter=123",
-    "path": "/ping",
-    "method": "POST",
-    "statusCode": 200,
-    "queryParams": {
-        "filter": ["123"]
-    },
-    "formData": {},
-    "requestHeaders": {
-        // Request headers here
-    },
-    "requestBody": {
-        "test": "Hello Webflux!"
-    },
-    "responseHeaders": {
-        // Response headers here
-    },
-    "responseBody": {
-        "result": "ok"
-    }
+  "uri": "http://localhost:8080/ping?filter=123",
+  "path": "/ping",
+  "method": "POST",
+  "statusCode": 200,
+  "queryParams": {
+    "filter": [
+      "123"
+    ]
+  },
+  "formData": {},
+  "requestHeaders": {
+    "Accept": "text/html"
+  },
+  "requestBody": {
+    "test": "Hello Webflux!"
+  },
+  "responseHeaders": {
+    "Content-Type": "text/html; charset=utf-8"
+  },
+  "responseBody": {
+    "result": "ok"
+  }
 }
 ```
 
 ## License
+
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

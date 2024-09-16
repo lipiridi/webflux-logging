@@ -40,8 +40,8 @@ public class LoggingWebFilter implements WebFilter {
         BodyCaptureExchange bodyCaptureExchange = new BodyCaptureExchange(serverWebExchange);
         return webFilterChain.filter(bodyCaptureExchange).doOnEach(voidInstance -> {
             HttpLog httpLog = createLog(bodyCaptureExchange);
-            LOG.info(JsonUtils.getJsonString(httpLog));
             httpLogConsumers.forEach(httpLogConsumer -> httpLogConsumer.accept(httpLog));
+            LOG.info(JsonUtils.getJsonString(httpLog));
         });
     }
 
