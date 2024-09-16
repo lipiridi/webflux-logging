@@ -5,7 +5,7 @@
 
     <groupId>io.github.lipiridi</groupId>
     <artifactId>webflux-logging</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>Webflux Logging</name>
     <description>Java library for logging incoming HTTP requests in Spring WebFlux applications</description>
@@ -61,6 +61,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
             <plugin>
